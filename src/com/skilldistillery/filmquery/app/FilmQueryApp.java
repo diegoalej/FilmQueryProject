@@ -15,8 +15,8 @@ public class FilmQueryApp {
 
 	public static void main(String[] args) {
 		FilmQueryApp app = new FilmQueryApp();
-		app.test();// this is just to make sure we have connection
-//    app.launch(); //uncomment this to run
+//		app.test();// this is just to make sure we have connection
+    app.launch(); //uncomment this to run
 	}
 
 	private void test() {
@@ -42,12 +42,12 @@ public class FilmQueryApp {
 
 	private void startUserInterface(Scanner input) {
 		boolean menu = true;
+		System.out.println("Welcome to the Movie app");
 		while (menu) {
-			System.out.println("Welcome to the Movie app");
 			System.out.println("Enter an integer to choose from the menu below");
 			System.out.println("1) Look up a film by its id");
 			System.out.println("2) Look up a film by a search keyword");
-			System.out.println("3) Exit the application\n> ");
+			System.out.print("3) Exit the application\n> ");
 			int choice = input.nextInt();
 			if (choice < 1 || choice > 3) {
 				System.out.println("Choice out of bounds, try again");
@@ -55,10 +55,10 @@ public class FilmQueryApp {
 			} else {
 				switch (choice) {
 				case 1:
-					System.out.print("Plese enter the film Id: ");
+					System.out.print("Please enter the film Id: ");
 					int idChoice = input.nextInt();
 					Film usrFilm = null;
-					usrFilm = db.findFilmById(choice);
+					usrFilm = db.findFilmById(idChoice);
 					if (usrFilm.getTitle() == null) {
 						System.out.println("A film by that id does not exist in the database!");
 						continue;
@@ -71,10 +71,11 @@ public class FilmQueryApp {
 				case 2:
 					List<Film> usrFilmKey = new ArrayList<>();
 					System.out.print("Please enter your search keyword: ");
-					String usrInput = input.nextLine();
+					String usrInput = input.next();
 					usrFilmKey = db.findFilmsByString(usrInput);
 					if (usrFilmKey.size() == 0) {
 						System.out.println("A film with that keyword does not exist in the database!");
+						input.nextLine();
 						continue;
 					}
 					else {
@@ -82,6 +83,7 @@ public class FilmQueryApp {
 						for (Film film : usrFilmKey) {							
 							System.out.println(film);
 						}
+						input.nextLine();
 						continue;
 					}
 				case 3:

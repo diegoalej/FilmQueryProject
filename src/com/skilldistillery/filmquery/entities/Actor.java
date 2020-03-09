@@ -23,13 +23,12 @@ public class Actor {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("Actor [id=");
-		builder.append(id);
-		builder.append(", firstName=");
+//		builder.append("First Name: ");
 		builder.append(firstName);
-		builder.append(", lastname=");
+//		builder.append(", Last Name: ");
+		builder.append(" ");
 		builder.append(lastname);
-		builder.append("]");
+		builder.append(". ");
 		return builder.toString();
 	}
 	@Override

@@ -55,11 +55,16 @@ public class Film {
 		builder.append(releaseYear);
 		builder.append(". Rating: ");
 		builder.append(rating);
-		builder.append(". Description: ");
+		builder.append(".\nDescription: ");
 		builder.append(description);
 		builder.append(". Language: ");
 		builder.append(language);
-		builder.append(".");
+		builder.append("\n");
+		builder.append("Cast:");
+		for (Actor actor : actors) {
+			builder.append(actor);
+//			builder.append(",");			
+		}
 		return builder.toString();
 	}
 

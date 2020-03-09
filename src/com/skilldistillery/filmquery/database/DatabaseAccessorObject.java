@@ -98,7 +98,6 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 			stmt.close();
 			conn.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return newFilm;
